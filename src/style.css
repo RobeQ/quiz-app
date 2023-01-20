@@ -1,3 +1,8 @@
+:root{
+  --vention-color: #9d7b93cc;
+  --main-content-color: #f9f9f9;
+}
+
 *,
 *::before,
 *::after {
@@ -27,4 +32,20 @@ body {
 
 header {
   padding: 0 2rem;
+}
+
+button {
+  text-transform: capitalize;
+}
+
+.vention-bg-color {
+  background-color: var(--vention-color);
+}
+
+.vention-color {
+  color: var(--vention-color);
+}
+
+.bg-vention-grey {
+  background-color: var(--main-content-color);
 }

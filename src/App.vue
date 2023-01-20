@@ -1,15 +1,15 @@
 <template>
-  <v-app class="bg-grey-lighten-3">
-    <QuizHeader />
-    <div class="vention-content"><QuizContent /></div>
-    <div class="vention-footer"><QuizFooter /></div>
+  <v-app>
+    <Header />
+    <div class="vention-content bg-vention-grey"><QuizContent /></div>
+    <div class="vention-footer"><Footer /></div>
   </v-app>
 </template>
 
 <script setup lang="ts">
-import QuizFooter from './views/footer/QuizFooter.vue';
-import QuizHeader from './views/header/QuizHeader.vue';
-import QuizContent from './views/content/QuizContent.vue';
+import Footer from './views/footer/Footer.vue';
+import Header from './views/header/Header.vue';
+import QuizContent from './views/content/MainPanel.vue';
 </script>
 
 <style scoped>
