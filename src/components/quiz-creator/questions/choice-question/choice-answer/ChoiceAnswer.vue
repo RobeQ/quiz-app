@@ -5,6 +5,7 @@
       :prepend-inner-icon="`mdi-alpha-${orderLetter}-circle-outline`"
       variant="solo"
       :rules="[(v) => !!v || 'Field is required']"
+      hide-details
       :model-value="label"
       @input="$emit('update:label', $event.target.value)"
     ></v-text-field
@@ -14,7 +15,7 @@
       icon="mdi-delete"
       color="red-lighten-2"
       :value="label"
-      @click="$emit('removeCheckbox', label)"
+      @click="$emit('removeAnswer')"
     ></v-btn>
   </div>
 </template>
@@ -26,7 +27,7 @@ const props = defineProps<{
   label: string;
   order: number;
 }>();
-defineEmits(['update:label', 'removeCheckbox']);
+defineEmits(['update:label', 'removeAnswer']);
 
 const orderLetter = computed(() => ['a', 'b', 'c', 'd', 'e'][props.order]);
 </script>

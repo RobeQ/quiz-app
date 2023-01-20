@@ -1,8 +1,16 @@
 <template>
-  <v-col cols="12" sm="12">
+  <v-container>
     <v-text-field
       model-value=""
       label="Quiz name*"
+      type="input"
+      :rules="[(v) => !!v || 'Field is required']"
+      clearable
+      variant="solo"
+    ></v-text-field>
+    <v-text-field
+      model-value=""
+      label="Quiz category*"
       type="input"
       :rules="[(v) => !!v || 'Field is required']"
       clearable
@@ -16,7 +24,7 @@
       variant="solo"
     ></v-textarea>
     <v-file-input chips label="Upload quiz cover" variant="solo"></v-file-input>
-  </v-col>
+  </v-container>
 </template>
 
 <script setup lang="ts"></script>

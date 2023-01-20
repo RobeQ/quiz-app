@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
 import HomeView from '../views/content/HomeView/HomeView.vue';
-import MyQuizzes from '../views/content/MyQuizzes/MyQuizzes.vue';
+import MyQuizzes from '../views/content/MyQuizzes/MyQuizzes/MyQuizzes.vue';
 import MyProfile from '../views/content/MyProfile/MyProfile.vue';
 import QuizRules from '../views/content/QuizRules/QuizRules.vue';
 import QuizCreator from '../views/content/MyQuizzes/QuizCreator/QuizCreator.vue';
