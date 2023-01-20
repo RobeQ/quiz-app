@@ -5,7 +5,7 @@
       class="button noFlush"
       :prepend-icon="icon"
       variant="text"
-      :ripple="true"
+      ripple
     >
       {{ props.label }}
     </v-btn>
@@ -37,5 +37,4 @@ const props = defineProps<{
 .noFlush {
   user-select: none;
 }
-
 </style>

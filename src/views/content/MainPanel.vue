@@ -10,7 +10,6 @@
 
 <style scoped>
 .main-panel {
-  background-color: #fff;
   margin-top: 1.5rem;
   border-radius: 0.4rem;
 }
