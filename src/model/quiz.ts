@@ -1,4 +1,11 @@
 export interface Quiz {
+  id: number;
+  name: string;
+  description: string;
+  createdDate: string;
+  createdBy: string;
+  imageSrc: string;
+  category: string;
   questions: Question[];
 }
 
@@ -23,7 +30,7 @@ export enum QUESTION_TYPE {
   CHRONOLOGY = 'CHRONOLOGY',
 }
 
-export const NEW_QUESTION = () => {
+export const NEW_QUESTION = (): Question => {
   return {
     id: Math.random(),
     text: 'Example question text',
@@ -33,5 +40,18 @@ export const NEW_QUESTION = () => {
       { id: Math.random(), label: 'Answer B', checked: false },
     ],
     active: false,
+  };
+};
+
+export const EMPTY_QUIZ = (): Quiz => {
+  return {
+    id: 0,
+    createdDate: '',
+    createdBy: '',
+    name: '',
+    description: '',
+    imageSrc: '',
+    category: '',
+    questions: [],
   };
 };

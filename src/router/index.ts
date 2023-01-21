@@ -62,6 +62,12 @@ const routes: ReadonlyArray<RouteRecordRaw> = [
     name: 'contest-creator',
     component: QuizCreator,
   },
+  {
+    path: '/contests/edit/:id',
+    name: 'contest-edit',
+    component: QuizCreator,
+    props: true,
+  },
   ...headerRoutes,
 ];
 

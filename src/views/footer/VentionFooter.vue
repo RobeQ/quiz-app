@@ -26,10 +26,6 @@ const logos = ref([
 </script>
 
 <style scoped>
-.vention-footer {
-  flex-shrink: 0;
-}
-
 .divider-margin {
   margin-left: 3rem;
   margin-right: 3rem;

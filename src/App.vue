@@ -7,8 +7,8 @@
 </template>
 
 <script setup lang="ts">
-import Footer from './views/footer/Footer.vue';
-import Header from './views/header/Header.vue';
+import Footer from './views/footer/VentionFooter.vue';
+import Header from './views/header/VentionHeader.vue';
 import QuizContent from './views/content/MainPanel.vue';
 </script>
 

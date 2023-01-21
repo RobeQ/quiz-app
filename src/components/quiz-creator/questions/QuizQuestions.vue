@@ -57,53 +57,59 @@
 </template>
 
 <script setup lang="ts">
-import { computed, reactive, ref } from 'vue';
+import { computed, ref } from 'vue';
 import ChoiceQuestion from './choice-question/ChoiceQuestion.vue';
 import { NEW_QUESTION, Quiz } from '../../../model/quiz';
 
+const props = defineProps<{
+  quiz: Quiz;
+}>();
+
 const snackbar = ref(false);
 const snackbarText = ref('');
-const quiz = reactive({ questions: [] } as Quiz);
 
 const addNewQuestion = () => {
   const newQuestion = NEW_QUESTION();
-  Object.assign(quiz.questions, [...quiz.questions, newQuestion]);
-  console.log(quiz.questions);
+  Object.assign(props.quiz.questions, [...props.quiz.questions, newQuestion]);
   activateQuestion(newQuestion.id);
 };
 
 const onAnswerAdd = () => {
-  if (activeQuestion.value!.answers.length === 5) {
+  if (activeQuestion.value?.answers.length === 5) {
     snackbarText.value = 'A maximum of five answers are allowed.';
     snackbar.value = true;
     return;
   }
-  activeQuestion.value!.answers = [
-    ...activeQuestion.value!.answers,
-    { id: Math.random(), label: '', checked: false },
-  ];
+  if (activeQuestion.value) {
+    activeQuestion.value.answers = [
+      ...activeQuestion.value.answers,
+      { id: Math.random(), label: '', checked: false },
+    ];
+  }
 };
 
 const onCheckboxChange = (id: number) => {
   const changedCheckbox = activeQuestion.value?.answers.find(
     (answer) => answer.id === Number(id)
   );
-  changedCheckbox!.checked = !changedCheckbox!.checked;
+  if (changedCheckbox) changedCheckbox.checked = !changedCheckbox.checked;
 };
 
 const onAnswerRemove = (id: number) => {
-  if (activeQuestion.value!.answers.length === 2) {
+  if (activeQuestion.value?.answers.length === 2) {
     snackbarText.value = 'At least two answers are required.';
     snackbar.value = true;
     return;
   }
-  activeQuestion.value!.answers = activeQuestion.value!.answers.filter(
-    (answer) => answer.id != id
-  );
+  if (activeQuestion.value) {
+    activeQuestion.value.answers = activeQuestion.value.answers.filter(
+      (answer) => answer.id != id
+    );
+  }
 };
 
 const activateQuestion = (questionId: number) => {
-  quiz.questions.forEach((question) =>
+  props.quiz.questions.forEach((question) =>
     question.id === questionId
       ? (question.active = true)
       : (question.active = false)
@@ -111,7 +117,7 @@ const activateQuestion = (questionId: number) => {
 };
 
 const activeQuestion = computed(() =>
-  quiz.questions.find((question) => question.active)
+  props.quiz.questions.find((question) => question.active)
 );
 </script>
 
