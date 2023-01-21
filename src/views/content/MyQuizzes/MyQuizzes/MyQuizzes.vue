@@ -34,19 +34,18 @@
 
 <script setup lang="ts">
 import { onMounted, reactive } from 'vue';
-import { get } from '../../../../api/api';
-import { AxiosResponse } from 'axios';
 import { Quiz } from '../../../../model/quiz';
 import { useRouter } from 'vue-router';
+import { useAxios } from '@vueuse/integrations/useAxios';
+import { GET_QUIZZES_URL } from '../../../../api/api-url';
 
 const router = useRouter();
 const quizzes = reactive([] as Array<Quiz>);
 
-onMounted(() =>
-  get('/quizzes', (res: AxiosResponse) => {
-    Object.assign(quizzes, res.data);
-  })
-);
+onMounted(async () => {
+  const { data } = await useAxios(GET_QUIZZES_URL);
+  Object.assign(quizzes, data.value);
+});
 
 const editQuiz = (quiz: Quiz) => {
   router.push({ name: 'contest-edit', params: { id: quiz.id } });

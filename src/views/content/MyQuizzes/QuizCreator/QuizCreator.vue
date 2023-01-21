@@ -45,7 +45,7 @@ import { computed, onMounted, reactive, ref } from 'vue';
 import QuizSettings from '../../../../components/quiz-creator/settings/QuizSettings.vue';
 import QuizQuestions from '../../../../components/quiz-creator/questions/QuizQuestions.vue';
 import { useRoute } from 'vue-router';
-import { GET_QUIZ_URL } from '../../../../api/api';
+import { GET_QUIZ_URL } from '../../../../api/api-url';
 import { useAxios } from '@vueuse/integrations/useAxios';
 import { EMPTY_QUIZ } from '../../../../model/quiz';
 
