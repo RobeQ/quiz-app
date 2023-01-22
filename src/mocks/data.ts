@@ -9,7 +9,7 @@ export const QUIZZES = [
     category: 'Robin Hood',
     description:
       'Robin Hood: Książę złodziei (ang. Robin Hood: Prince of Thieves) – amerykański film przygodowy z 1991 roku w reżyserii Kevina Reynoldsa.',
-    imageSrc: 'robin.png',
+    imageSrc: 'images/robin.png',
     questions: [
       {
         id: 1,
@@ -54,7 +54,7 @@ export const QUIZZES = [
     category: 'The Beatles',
     description:
       'The Beatles – brytyjski rockowy zespół muzyczny z Liverpoolu, działający w latach 1960–1970. Przez większość tego okresu (w latach 1962–1969) w jego skład wchodzili John Lennon, Paul McCartney, George Harrison i Ringo Starr.',
-    imageSrc: 'the-beatles.png',
+    imageSrc: 'images/the-beatles.png',
     questions: [
       {
         id: 1,
@@ -87,7 +87,7 @@ export const QUIZZES = [
     category: 'Jeden z dziesięciu',
     description:
       'Polski teleturniej prowadzony przez Tadeusza Sznuka, produkowany przez Euromedia TV i TVP3 Lublin i emitowany w Telewizji Polskiej od 3 czerwca 1994[1], oparty na brytyjskim formacie Fifteen to One wymyślonym przez Johna M. Lewisa, na licencji All3Media International, którego oryginał był emitowany na antenie Channel 4. Pod względem lat emisji jest to najdłużej nadawany (spośród wciąż produkowanych) teleturniej w polskiej telewizji.',
-    imageSrc: 'tadi.jpg',
+    imageSrc: 'images/tadi.jpg',
     questions: [
       {
         id: 1,

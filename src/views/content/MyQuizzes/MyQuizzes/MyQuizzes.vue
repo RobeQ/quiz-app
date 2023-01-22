@@ -12,22 +12,39 @@
     >
       Create a quiz
     </v-btn>
-    <v-list lines="two" class="bg-grey-lighten-5">
-      <v-list-item
+    <v-list class="bg-grey-lighten-5">
+      <v-hover
         v-for="quiz in quizzes"
+        v-slot="{ isHovering, props }"
         :key="quiz.id"
-        :title="quiz.name"
-        :subtitle="'Created by ' + quiz.createdBy + ' on ' + quiz.createdDate"
-        class="vention-quiz"
-        rounded
-        @click="editQuiz(quiz)"
       >
-        <template #prepend>
-          <v-avatar>
-            <v-img :src="quiz.imageSrc"></v-img>
-          </v-avatar>
-        </template>
-      </v-list-item>
+        <v-list-item
+          v-bind="props"
+          :elevation="isHovering ? 4 : 1"
+          :class="{ 'on-hover': isHovering }"
+          :title="quiz.name"
+          :subtitle="'Created by ' + quiz.createdBy + ' on ' + quiz.createdDate"
+          class="vention-quiz py-4"
+          rounded
+        >
+          <template #prepend>
+            <v-avatar><v-img :src="quiz.imageSrc"></v-img></v-avatar
+          ></template>
+          <template #append>
+            <v-btn
+              v-for="button in QUIZ_BUTTONS"
+              :key="button.type"
+              class="mr-4"
+              variant="outlined"
+              :prepend-icon="`mdi-${button.icon}`"
+              :color="`${button.color}-lighten-2`"
+              size="small"
+              @click="onQuizClick(button.type, quiz.id)"
+              >{{ button.type }}</v-btn
+            >
+          </template>
+        </v-list-item>
+      </v-hover>
     </v-list>
   </v-container>
 </template>
@@ -38,6 +55,7 @@ import { Quiz } from '../../../../model/quiz';
 import { useRouter } from 'vue-router';
 import { useAxios } from '@vueuse/integrations/useAxios';
 import { GET_QUIZZES_URL } from '../../../../api/api-url';
+import { BUTTON_TYPE, QUIZ_BUTTONS } from '../../../../util/buttons';
 
 const router = useRouter();
 const quizzes = reactive([] as Array<Quiz>);
@@ -47,16 +65,35 @@ onMounted(async () => {
   Object.assign(quizzes, data.value);
 });
 
-const editQuiz = (quiz: Quiz) => {
-  router.push({ name: 'contest-edit', params: { id: quiz.id } });
+const onQuizClick = (buttonType: BUTTON_TYPE, quizId: number) => {
+  switch (buttonType) {
+    case BUTTON_TYPE.START:
+      startQuiz(quizId);
+      break;
+    case BUTTON_TYPE.EDIT:
+      editQuiz(quizId);
+      break;
+    case BUTTON_TYPE.DELETE:
+      deleteQuiz(quizId);
+      break;
+  }
+};
+
+const startQuiz = (quizId: number) => {
+  console.log('PLAY QUIZ WITH ID: ' + quizId);
+};
+
+const editQuiz = (quizId: number) => {
+  router.push({ name: 'contest-edit', params: { id: quizId } });
+};
+
+const deleteQuiz = (quizId: number) => {
+  console.log('DELETE QUIZ WITH ID: ' + quizId);
 };
 </script>
 
 <style scoped>
 .vention-quiz {
-  cursor: pointer;
-}
-.vention-quiz:hover {
-  background: rgb(220, 220, 220);
+  margin: 0.6rem 0;
 }
 </style>
