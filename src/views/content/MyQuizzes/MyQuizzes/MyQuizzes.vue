@@ -55,7 +55,7 @@ import { Quiz } from '../../../../model/quiz';
 import { useRouter } from 'vue-router';
 import { useAxios } from '@vueuse/integrations/useAxios';
 import { GET_QUIZZES_URL } from '../../../../api/api-url';
-import { BUTTON_TYPE, QUIZ_BUTTONS } from '../../../../util/buttons';
+import { Quiz_Button_Type, QUIZ_BUTTONS } from '../../../../util/buttons';
 
 const router = useRouter();
 const quizzes = reactive([] as Array<Quiz>);
@@ -65,15 +65,15 @@ onMounted(async () => {
   Object.assign(quizzes, data.value);
 });
 
-const onQuizClick = (buttonType: BUTTON_TYPE, quizId: number) => {
+const onQuizClick = (buttonType: Quiz_Button_Type, quizId: number) => {
   switch (buttonType) {
-    case BUTTON_TYPE.START:
+    case Quiz_Button_Type.START:
       startQuiz(quizId);
       break;
-    case BUTTON_TYPE.EDIT:
+    case Quiz_Button_Type.EDIT:
       editQuiz(quizId);
       break;
-    case BUTTON_TYPE.DELETE:
+    case Quiz_Button_Type.DELETE:
       deleteQuiz(quizId);
       break;
   }

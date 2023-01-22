@@ -1,4 +1,4 @@
-import { QUESTION_TYPE } from '../model/quiz';
+import { Question_Type } from '../model/quiz';
 
 export const QUIZZES = [
   {
@@ -14,7 +14,7 @@ export const QUIZZES = [
       {
         id: 1,
         text: 'Dlaczego Robin Hood?',
-        type: QUESTION_TYPE.SINGLE_CHOICE,
+        type: Question_Type.SINGLE_CHOICE,
         answers: [
           { id: 1, label: 'Nie wiem', checked: false },
           { id: 2, label: 'Robin nie jest taki chudy', checked: false },
@@ -25,7 +25,7 @@ export const QUIZZES = [
       {
         id: 2,
         text: 'Co robi dzik w zamku?',
-        type: QUESTION_TYPE.SINGLE_CHOICE,
+        type: Question_Type.SINGLE_CHOICE,
         answers: [
           { id: 1, label: 'Nie wiem', checked: false },
           { id: 2, label: 'Penetruje lochy', checked: true },
@@ -36,7 +36,7 @@ export const QUIZZES = [
       {
         id: 3,
         text: 'Co mówi japończyk gdy widzi okno?',
-        type: QUESTION_TYPE.SINGLE_CHOICE,
+        type: Question_Type.SINGLE_CHOICE,
         answers: [
           { id: 1, label: 'Toshiba', checked: true },
           { id: 2, label: 'Jao ming', checked: false },
@@ -59,7 +59,7 @@ export const QUIZZES = [
       {
         id: 1,
         text: 'W jakich latach śpiewali The Beatles?',
-        type: QUESTION_TYPE.SINGLE_CHOICE,
+        type: Question_Type.SINGLE_CHOICE,
         answers: [
           { id: 1, label: '1960–1970', checked: true },
           { id: 2, label: '1950–1960', checked: false },
@@ -69,7 +69,7 @@ export const QUIZZES = [
       {
         id: 2,
         text: 'Z jakiego zespołu wywodzą się Beatlesi?',
-        type: QUESTION_TYPE.SINGLE_CHOICE,
+        type: Question_Type.SINGLE_CHOICE,
         answers: [
           { id: 1, label: 'Queen', checked: false },
           { id: 2, label: 'Pearl Jam', checked: false },
@@ -92,7 +92,7 @@ export const QUIZZES = [
       {
         id: 1,
         text: 'Anchois (anszua) to francuskie określenie produktu z',
-        type: QUESTION_TYPE.SINGLE_CHOICE,
+        type: Question_Type.SINGLE_CHOICE,
         answers: [
           { id: 1, label: 'ryb', checked: true },
           { id: 2, label: 'żabich udek', checked: false },
@@ -103,7 +103,7 @@ export const QUIZZES = [
       {
         id: 2,
         text: 'Seradela, to',
-        type: QUESTION_TYPE.SINGLE_CHOICE,
+        type: Question_Type.SINGLE_CHOICE,
         answers: [
           { id: 1, label: 'roślina', checked: true },
           { id: 2, label: 'ryba', checked: false },
@@ -114,7 +114,7 @@ export const QUIZZES = [
       {
         id: 3,
         text: 'Gliniarz, to slangowe określenie którego zawodu?',
-        type: QUESTION_TYPE.SINGLE_CHOICE,
+        type: Question_Type.SINGLE_CHOICE,
         answers: [
           {
             id: 1,
@@ -129,7 +129,7 @@ export const QUIZZES = [
       {
         id: 4,
         text: 'I w Paryżu nie zrobią z owsa',
-        type: QUESTION_TYPE.SINGLE_CHOICE,
+        type: Question_Type.SINGLE_CHOICE,
         answers: [
           {
             id: 1,

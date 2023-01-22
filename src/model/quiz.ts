@@ -12,7 +12,7 @@ export interface Quiz {
 export interface Question {
   id: number;
   text: string;
-  type: QUESTION_TYPE;
+  type: Question_Type;
   answers: Answer[];
   active: boolean;
 }
@@ -23,7 +23,7 @@ export interface Answer {
   checked: boolean;
 }
 
-export enum QUESTION_TYPE {
+export enum Question_Type {
   SINGLE_CHOICE = 'SINGLE_CHOICE',
   MULTI_CHOICE = 'MULTI_CHOICE',
   TRUE_FALSE = 'TRUE_FALSE',
@@ -34,7 +34,7 @@ export const NEW_QUESTION = (): Question => {
   return {
     id: Math.random(),
     text: 'Example question text',
-    type: QUESTION_TYPE.MULTI_CHOICE,
+    type: Question_Type.MULTI_CHOICE,
     answers: [
       { id: Math.random(), label: 'Answer A', checked: false },
       { id: Math.random(), label: 'Answer B', checked: false },
