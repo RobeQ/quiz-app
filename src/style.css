@@ -1,0 +1,51 @@
+:root {
+  --vention-color: #9d7b93cc;
+  --main-content-color: #f9f9f9;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+html {
+  overflow-y: auto;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  padding: 0 2rem;
+}
+
+button {
+  text-transform: capitalize;
+}
+
+.vention-bg-color {
+  background-color: var(--vention-color);
+}
+
+.vention-color {
+  color: var(--vention-color);
+}
+
+.bg-vention-grey {
+  background-color: var(--main-content-color);
+}
