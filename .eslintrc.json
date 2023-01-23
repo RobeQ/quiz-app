@@ -19,6 +19,6 @@
   "rules": {
     "quotes": [2, "single", { "avoidEscape": true }],
     "@typescript-eslint/no-explicit-any": "off",
-    "prettier/prettier": ["error", { "singleQuote": true }]
+    "prettier/prettier": ["error", { "singleQuote": true, "endOfLine": "auto" }]
   }
 }

@@ -5,22 +5,37 @@ export interface Quiz {
   createdDate: string;
   createdBy: string;
   imageSrc: string;
-  category: string;
+  category: Category;
   questions: Question[];
 }
 
 export interface Question {
   id: number;
+  order: number;
   text: string;
+  imageSrc: string;
+  feedback: string;
   type: Question_Type;
+  group: Group;
+  time: number;
   answers: Answer[];
-  active: boolean;
+}
+
+export interface Group {
+  id: number;
+  name: string;
+}
+
+export interface Category {
+  id: number;
+  name: string;
+  description: string;
 }
 
 export interface Answer {
   id: number;
-  label: string;
-  checked: boolean;
+  content: string;
+  isCorrect: boolean;
 }
 
 export enum Question_Type {
@@ -32,14 +47,18 @@ export enum Question_Type {
 
 export const NEW_QUESTION = (): Question => {
   return {
+    feedback: '',
+    group: { id: 0, name: '' },
+    imageSrc: '',
+    order: 0,
     id: Math.random(),
     text: 'Example question text',
     type: Question_Type.MULTI_CHOICE,
+    time: 30,
     answers: [
-      { id: Math.random(), label: 'Answer A', checked: false },
-      { id: Math.random(), label: 'Answer B', checked: false },
+      { id: Math.random(), content: 'Answer A', isCorrect: false },
+      { id: Math.random(), content: 'Answer B', isCorrect: false },
     ],
-    active: false,
   };
 };
 
@@ -51,7 +70,11 @@ export const EMPTY_QUIZ = (): Quiz => {
     name: '',
     description: '',
     imageSrc: '',
-    category: '',
+    category: {
+      id: 0,
+      name: '',
+      description: '',
+    },
     questions: [],
   };
 };

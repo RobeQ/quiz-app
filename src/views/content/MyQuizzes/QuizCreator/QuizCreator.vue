@@ -33,9 +33,17 @@
     </v-window>
     <div class="text-end pa-2">
       <v-btn color="success" variant="outlined">Cancel</v-btn>
-      <v-btn class="ml-3" color="success">{{
+      <v-btn class="ml-3" color="success" @click="onQuizCreatorClick">{{
         isEdit ? 'Update' : 'Save'
       }}</v-btn>
+      <AgreementModal
+        v-model:dialog="dialog"
+        class="w-50"
+        text="Are you sure you want to upgrade quiz?"
+        agree-text="Agree"
+        disagree-text="Disagree"
+        title="Update quiz"
+      />
     </div>
   </v-container>
 </template>
@@ -48,11 +56,13 @@ import { useRoute } from 'vue-router';
 import { GET_QUIZ_URL } from '../../../../api/api-url';
 import { useAxios } from '@vueuse/integrations/useAxios';
 import { EMPTY_QUIZ } from '../../../../model/quiz';
+import AgreementModal from '../../../../components/modal/AgreementModal.vue';
 
 const route = useRoute();
 
 const tab = ref('Settings');
 const quiz = reactive(EMPTY_QUIZ());
+const dialog = ref(false);
 
 onMounted(async () => {
   if (isEdit.value) {
@@ -65,6 +75,20 @@ const tabNameToComponentMap = new Map<string, any>([
   ['Settings', QuizSettings],
   ['Questions', QuizQuestions],
 ]);
+
+const updateQuiz = () => {
+  dialog.value = true;
+  console.log('UPDATE QUIZ');
+};
+const saveQuiz = () => {
+  dialog.value = true;
+  console.log('SAVE QUIZ');
+};
+
+const onQuizCreatorClick = () => {
+  if (isEdit.value) updateQuiz();
+  else saveQuiz();
+};
 
 const isEdit = computed(() => route.params.id);
 </script>

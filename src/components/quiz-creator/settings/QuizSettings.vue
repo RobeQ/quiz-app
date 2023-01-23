@@ -9,7 +9,7 @@
       variant="solo"
     ></v-text-field>
     <v-text-field
-      :model-value="quiz.category"
+      :model-value="quiz.category.name"
       label="Quiz category*"
       type="input"
       :rules="[(v) => !!v || 'Field is required']"
