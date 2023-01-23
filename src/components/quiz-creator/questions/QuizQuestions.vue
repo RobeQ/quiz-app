@@ -7,7 +7,9 @@
             v-for="(question, index) in quiz.questions"
             :key="question.id"
             class="question"
-            :class="`${question.active ? 'bg-grey-lighten-3' : ''}`"
+            :class="`${
+              question.id === activeQuestionId ? 'bg-grey-lighten-3' : ''
+            }`"
             @click="activateQuestion(question.id)"
           >
             {{ index + 1 }}. {{ question.text }}
@@ -28,6 +30,9 @@
           <ChoiceQuestion
             v-model:question-text="activeQuestion.text"
             v-model:answers="activeQuestion.answers"
+            v-model:question-time="activeQuestion.time"
+            v-model:group-name="activeQuestion.group.name"
+            v-model:feedback="activeQuestion.feedback"
             @checkbox-change="onCheckboxChange"
             @remove-answer="onAnswerRemove"
             @add-answer="onAnswerAdd"
@@ -65,6 +70,7 @@ const props = defineProps<{
   quiz: Quiz;
 }>();
 
+const activeQuestionId = ref(props.quiz.questions[0]?.id);
 const snackbar = ref(false);
 const snackbarText = ref('');
 
@@ -83,7 +89,7 @@ const onAnswerAdd = () => {
   if (activeQuestion.value) {
     activeQuestion.value.answers = [
       ...activeQuestion.value.answers,
-      { id: Math.random(), label: '', checked: false },
+      { id: Math.random(), content: '', isCorrect: false },
     ];
   }
 };
@@ -92,7 +98,7 @@ const onCheckboxChange = (id: number) => {
   const changedCheckbox = activeQuestion.value?.answers.find(
     (answer) => answer.id === Number(id)
   );
-  if (changedCheckbox) changedCheckbox.checked = !changedCheckbox.checked;
+  if (changedCheckbox) changedCheckbox.isCorrect = !changedCheckbox.isCorrect;
 };
 
 const onAnswerRemove = (id: number) => {
@@ -109,15 +115,15 @@ const onAnswerRemove = (id: number) => {
 };
 
 const activateQuestion = (questionId: number) => {
-  props.quiz.questions.forEach((question) =>
-    question.id === questionId
-      ? (question.active = true)
-      : (question.active = false)
-  );
+  props.quiz.questions.forEach((question) => {
+    if (question.id === questionId) activeQuestionId.value = questionId;
+  });
 };
 
 const activeQuestion = computed(() =>
-  props.quiz.questions.find((question) => question.active)
+  props.quiz.questions.find(
+    (question) => question.id === activeQuestionId.value
+  )
 );
 </script>
 
