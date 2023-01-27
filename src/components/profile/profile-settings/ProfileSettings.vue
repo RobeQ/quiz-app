@@ -21,7 +21,7 @@
 </template>
 
 <script setup lang="ts">
-import { Profile } from '../../../model/profile';
+import { Profile } from '@/model/profile';
 
 defineProps<{
   profile: Profile;

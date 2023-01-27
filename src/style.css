@@ -34,7 +34,7 @@ header {
   padding: 0 2rem;
 }
 
-button {
+.button {
   text-transform: capitalize;
 }
 
@@ -48,4 +48,9 @@ button {
 
 .bg-vention-grey {
   background-color: var(--main-content-color);
+}
+
+.nav-link {
+  text-decoration: none;
+  color: black;
 }

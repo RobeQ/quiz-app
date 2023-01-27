@@ -6,13 +6,22 @@
           <div
             v-for="(question, index) in quiz.questions"
             :key="question.id"
-            class="question"
+            class="question-wrapper pa-1"
             :class="`${
               question.id === activeQuestionId ? 'bg-grey-lighten-3' : ''
             }`"
-            @click="activateQuestion(question.id)"
           >
-            {{ index + 1 }}. {{ question.text }}
+            <span class="question" @click="activateQuestion(question.id)"
+              >{{ index + 1 }}. {{ question.text }}</span
+            >
+            <v-btn
+              class="align-self-center"
+              icon="mdi-delete"
+              variant="text"
+              size="small"
+              color="red-lighten-2"
+              @click="$emit('removeQuestion', question.id)"
+            ></v-btn>
           </div>
           <div class="text-center mt-4">
             <v-btn
@@ -31,11 +40,11 @@
             v-model:question-text="activeQuestion.text"
             v-model:answers="activeQuestion.answers"
             v-model:question-time="activeQuestion.time"
-            v-model:group-name="activeQuestion.group.name"
+            v-model:group-id="activeQuestion.group"
             v-model:feedback="activeQuestion.feedback"
-            @checkbox-change="onCheckboxChange"
-            @remove-answer="onAnswerRemove"
-            @add-answer="onAnswerAdd"
+            @checkbox-change="changeCheckbox"
+            @remove-answer="removeAnswer"
+            @add-answer="addAnswer"
           />
         </v-sheet>
       </v-col>
@@ -64,11 +73,13 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue';
 import ChoiceQuestion from './choice-question/ChoiceQuestion.vue';
-import { NEW_QUESTION, Quiz } from '../../../model/quiz';
+import { NEW_QUESTION, Quiz } from '@/model/quiz';
 
 const props = defineProps<{
   quiz: Quiz;
 }>();
+
+defineEmits(['removeQuestion']);
 
 const activeQuestionId = ref(props.quiz.questions[0]?.id);
 const snackbar = ref(false);
@@ -80,7 +91,7 @@ const addNewQuestion = () => {
   activateQuestion(newQuestion.id);
 };
 
-const onAnswerAdd = () => {
+const addAnswer = () => {
   if (activeQuestion.value?.answers.length === 5) {
     snackbarText.value = 'A maximum of five answers are allowed.';
     snackbar.value = true;
@@ -94,14 +105,14 @@ const onAnswerAdd = () => {
   }
 };
 
-const onCheckboxChange = (id: number) => {
+const changeCheckbox = (id: number) => {
   const changedCheckbox = activeQuestion.value?.answers.find(
     (answer) => answer.id === Number(id)
   );
   if (changedCheckbox) changedCheckbox.isCorrect = !changedCheckbox.isCorrect;
 };
 
-const onAnswerRemove = (id: number) => {
+const removeAnswer = (id: number) => {
   if (activeQuestion.value?.answers.length === 2) {
     snackbarText.value = 'At least two answers are required.';
     snackbar.value = true;
@@ -114,7 +125,7 @@ const onAnswerRemove = (id: number) => {
   }
 };
 
-const activateQuestion = (questionId: number) => {
+const activateQuestion = (questionId: number | undefined) => {
   props.quiz.questions.forEach((question) => {
     if (question.id === questionId) activeQuestionId.value = questionId;
   });
@@ -128,10 +139,15 @@ const activeQuestion = computed(() =>
 </script>
 
 <style scoped>
-.question {
-  padding: 1rem;
+.question-wrapper {
+  display: flex;
+  justify-content: space-between;
   font-weight: 600;
   font-size: 1rem;
+}
+
+.question {
   cursor: pointer;
+  align-self: center;
 }
 </style>

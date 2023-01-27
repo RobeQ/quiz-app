@@ -2,7 +2,9 @@
   <div class="bg-vention-grey">
     <v-divider class="divider-margin"></v-divider>
     <v-footer class="justify-center bg-vention-grey">
-      <span>© {{ new Date().getFullYear() }} Vention Quiz</span>
+      <DesktopView>
+        <span>© {{ new Date().getFullYear() }} Vention Quiz</span>
+      </DesktopView>
       <v-btn
         v-for="icon in logos"
         :key="icon"
@@ -16,6 +18,7 @@
 
 <script setup lang="ts">
 import { ref } from 'vue';
+import DesktopView from '@/utils/DesktopView.vue';
 
 const logos = ref([
   'mdi-facebook',

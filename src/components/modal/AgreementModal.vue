@@ -1,25 +1,25 @@
 <template>
   <v-dialog :model-value="dialog" persistent>
-    <v-card>
+    <v-card border rounded class="pa-3">
       <v-card-title class="text-h5">
-        {{ title }}
+        {{ modal.title }}
       </v-card-title>
-      <v-card-text>{{ text }}</v-card-text>
+      <v-card-text class="text-h7">{{ modal.text }}</v-card-text>
       <v-card-actions>
         <v-spacer></v-spacer>
         <v-btn
           color="green-darken-1"
-          variant="text"
+          variant="outlined"
           @click="$emit('update:dialog', false)"
         >
-          {{ disagreeText }}
+          {{ modal.disagreeText }}
         </v-btn>
         <v-btn
           color="green-darken-1"
-          variant="text"
-          @click="$emit('update:dialog', false)"
+          variant="elevated"
+          @click="$emit('agree', modal.action)"
         >
-          {{ agreeText }}
+          {{ modal.agreeText }}
         </v-btn>
       </v-card-actions>
     </v-card>
@@ -27,15 +27,14 @@
 </template>
 
 <script setup lang="ts">
+import { QuizActionModal } from '@/model/modal';
+
 defineProps<{
   dialog: boolean;
-  title: string;
-  text: string;
-  agreeText: string;
-  disagreeText: string;
+  modal?: QuizActionModal;
 }>();
 
-defineEmits(['update:dialog']);
+defineEmits(['update:dialog', 'agree']);
 </script>
 
 <style scoped></style>

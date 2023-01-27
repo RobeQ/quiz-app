@@ -12,6 +12,9 @@ import './style.css';
 const vuetify = createVuetify({
   components,
   directives,
+  display: {
+    mobileBreakpoint: 'md',
+  },
 });
 
 if (import.meta.env.VITE_MSW_ENABLED === 'true') {

@@ -1,4 +1,4 @@
-import { Question_Type } from '../model/quiz';
+import { Question_Type } from '@/model/quiz';
 
 export const QUIZZES = [
   {
@@ -9,11 +9,7 @@ export const QUIZZES = [
     createdDate: '15/01/2023',
     createdBy: 'John Wick',
     imageSrc: 'images/robin.png',
-    category: {
-      id: 1,
-      name: 'Robin Hood',
-      description: 'Robin Hood to wspaniały człowiek',
-    },
+    category: 1,
     questions: [
       {
         id: 1,
@@ -21,11 +17,8 @@ export const QUIZZES = [
         text: 'Dlaczego Robin Hood?',
         imageSrc: 'images/robin.png',
         feedback: 'To oczywiste!',
-        type: Question_Type.SINGLE_CHOICE,
-        group: {
-          id: 1,
-          name: 'Robin Hood 1',
-        },
+        type: Question_Type.SC,
+        group: 1,
         time: 50,
         answers: [
           { id: 1, content: 'Nie wiem', isCorrect: false },
@@ -36,19 +29,15 @@ export const QUIZZES = [
       {
         id: 2,
         order: 2,
-        text: 'Co robi dzik w zamku?',
+        text: 'Co tam?',
         imageSrc: 'images/robin.png',
         feedback: 'No tak!',
-        type: Question_Type.SINGLE_CHOICE,
-        group: {
-          id: 1,
-          name: 'Robin Hood 1',
-        },
+        type: Question_Type.SC,
+        group: 1,
         time: 50,
         answers: [
-          { id: 1, content: 'Nie wiem', isCorrect: false },
-          { id: 2, content: 'Hehe', isCorrect: false },
-          { id: 3, content: 'Penetruje lochy', isCorrect: true },
+          { id: 1, content: 'Nie wiem', isCorrect: true },
+          { id: 2, content: 'Nic', isCorrect: false },
         ],
       },
     ],
@@ -61,11 +50,7 @@ export const QUIZZES = [
     description:
       'The Beatles – brytyjski rockowy zespół muzyczny z Liverpoolu, działający w latach 1960–1970. Przez większość tego okresu (w latach 1962–1969) w jego skład wchodzili John Lennon, Paul McCartney, George Harrison i Ringo Starr.',
     imageSrc: 'images/the-beatles.png',
-    category: {
-      id: 2,
-      name: 'The beatles',
-      description: 'The Beatles - wspaniałe czasy',
-    },
+    category: 2,
     questions: [
       {
         id: 1,
@@ -74,11 +59,8 @@ export const QUIZZES = [
         order: 1,
         imageSrc: 'images/the-beatles.png',
         feedback: 'To oczywiste!',
-        type: Question_Type.SINGLE_CHOICE,
-        group: {
-          id: 2,
-          name: 'The Beatles 1',
-        },
+        type: Question_Type.SC,
+        group: 2,
         answers: [
           { id: 1, content: '1960–1970', isCorrect: true },
           { id: 2, content: '1950–1960', isCorrect: false },
@@ -91,11 +73,8 @@ export const QUIZZES = [
         order: 2,
         imageSrc: 'images/the-beatles.png',
         feedback: 'To oczywiste!',
-        type: Question_Type.SINGLE_CHOICE,
-        group: {
-          id: 2,
-          name: 'The Beatles 1',
-        },
+        type: Question_Type.SC,
+        group: 2,
         answers: [
           { id: 1, content: 'Nic', isCorrect: true },
           { id: 2, content: 'Sporo', isCorrect: false },
@@ -108,11 +87,7 @@ export const QUIZZES = [
     createdDate: '21/01/2023',
     createdBy: 'John Wick',
     name: 'Jeden z dziesięciu - Pan Tadeusz Sznuk',
-    category: {
-      id: 3,
-      name: '1 z 10',
-      description: '1 z 10 - Tadeusz rządzi',
-    },
+    category: 3,
     description:
       'Polski teleturniej prowadzony przez Tadeusza Sznuka, produkowany przez Euromedia TV i TVP3 Lublin i emitowany w Telewizji Polskiej od 3 czerwca 1994[1], oparty na brytyjskim formacie Fifteen to One wymyślonym przez Johna M. Lewisa, na licencji All3Media International, którego oryginał był emitowany na antenie Channel 4. Pod względem lat emisji jest to najdłużej nadawany (spośród wciąż produkowanych) teleturniej w polskiej telewizji.',
     imageSrc: 'images/tadi.jpg',
@@ -122,11 +97,8 @@ export const QUIZZES = [
         order: 1,
         imageSrc: 'images/tadi.jpg',
         feedback: 'To oczywiste!',
-        type: Question_Type.SINGLE_CHOICE,
-        group: {
-          id: 3,
-          name: '1 z 10',
-        },
+        type: Question_Type.SC,
+        group: 3,
         text: 'Anchois (anszua) to francuskie określenie produktu z',
         time: 30,
         answers: [
@@ -141,11 +113,8 @@ export const QUIZZES = [
         imageSrc: 'images/tadi.jpg',
         feedback: 'To oczywiste!',
         text: 'Seradela, to',
-        type: Question_Type.SINGLE_CHOICE,
-        group: {
-          id: 3,
-          name: '1 z 10',
-        },
+        type: Question_Type.SC,
+        group: 3,
         time: 30,
         answers: [
           { id: 1, content: 'roślina', isCorrect: true },
@@ -156,14 +125,11 @@ export const QUIZZES = [
       {
         id: 3,
         text: 'Gliniarz, to slangowe określenie którego zawodu?',
-        type: Question_Type.SINGLE_CHOICE,
+        type: Question_Type.SC,
         order: 3,
         imageSrc: 'images/tadi.jpg',
         feedback: 'To oczywiste!',
-        group: {
-          id: 3,
-          name: '1 z 10',
-        },
+        group: 3,
         time: 30,
         answers: [
           {
@@ -179,14 +145,11 @@ export const QUIZZES = [
         id: 4,
         text: 'I w Paryżu nie zrobią z owsa',
         time: 30,
-        type: Question_Type.SINGLE_CHOICE,
+        type: Question_Type.SC,
         order: 4,
         imageSrc: 'images/tadi.jpg',
         feedback: 'To oczywiste!',
-        group: {
-          id: 3,
-          name: '1 z 10',
-        },
+        group: 3,
         answers: [
           {
             id: 1,
@@ -199,4 +162,23 @@ export const QUIZZES = [
       },
     ],
   },
+];
+
+export const QUESTION_GROUPS = [
+  { id: 1, name: 'Robin Hood' },
+  { id: 2, name: 'The Beatles' },
+  { id: 3, name: '1 z 10' },
+  { id: 4, name: 'Harry Potter' },
+  { id: 5, name: "Music 80's" },
+  { id: 6, name: 'Animals' },
+  { id: 7, name: 'The Walking Dead' },
+  { id: 8, name: 'Snoop Dogg' },
+  { id: 9, name: 'Funny facts' },
+  { id: 10, name: 'Technology' },
+];
+
+export const QUIZ_CATEGORIES = [
+  { id: 1, name: 'Robin Hood' },
+  { id: 2, name: 'Harry Potter' },
+  { id: 3, name: 'The Beatles' },
 ];
