@@ -1,18 +1,19 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
-import HomeView from '../views/content/HomeView/HomeView.vue';
-import MyQuizzes from '../views/content/MyQuizzes/MyQuizzes/MyQuizzes.vue';
-import MyProfile from '../views/content/MyProfile/MyProfile.vue';
-import QuizRules from '../views/content/QuizRules/QuizRules.vue';
-import QuizCreator from '../views/content/MyQuizzes/QuizCreator/QuizCreator.vue';
-import HelpView from '../views/content/HelpView/HelpView.vue';
-import PlayView from '../views/content/PlayView/PlayView.vue';
+import MyQuizzes from '@/views/content/MyQuizzes/MyQuizzes/MyQuizzes.vue';
+import MyProfile from '@/views/content/MyProfile/MyProfile.vue';
+import QuizRules from '@/views/content/QuizRules/QuizRules.vue';
+import QuizCreator from '@/views/content/MyQuizzes/QuizCreator/QuizCreator.vue';
+import HelpView from '@/views/content/HelpView/HelpView.vue';
+import PlayView from '@/views/content/PlayView/PlayView.vue';
+import AdminView from '@/views/content/AdminView/AdminView.vue';
 
 type HeaderIcon =
   | 'mdi-controller'
   | 'mdi-puzzle'
   | 'mdi-account-cog'
   | 'mdi-calendar-text-outline'
-  | 'mdi-help';
+  | 'mdi-help'
+  | 'mdi-shield-crown';
 
 type HeaderRouteRecord = RouteRecordRaw & {
   icon: HeaderIcon;
@@ -20,7 +21,7 @@ type HeaderRouteRecord = RouteRecordRaw & {
 
 export const headerRoutes: ReadonlyArray<HeaderRouteRecord> = [
   {
-    path: '/play',
+    path: '/',
     name: 'Play',
     component: PlayView,
     icon: 'mdi-controller',
@@ -49,13 +50,19 @@ export const headerRoutes: ReadonlyArray<HeaderRouteRecord> = [
     component: HelpView,
     icon: 'mdi-help',
   },
+  {
+    path: '/admin',
+    name: 'Admin',
+    component: AdminView,
+    icon: 'mdi-shield-crown',
+  },
 ];
 
 const routes: ReadonlyArray<RouteRecordRaw> = [
   {
     path: '/',
-    name: 'home',
-    component: HomeView,
+    name: 'Home',
+    component: PlayView,
   },
   {
     path: '/contests/create',

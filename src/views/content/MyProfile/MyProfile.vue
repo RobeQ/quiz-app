@@ -35,10 +35,10 @@
 
 <script setup lang="ts">
 import { reactive, ref } from 'vue';
-import { Profile_Button_Type } from '../../../util/buttons';
-import ProfileSettings from '../../../components/profile/profile-settings/ProfileSettings.vue';
-import ChangePassword from '../../../components/profile/change-password/ChangePassword.vue';
-import { Role } from '../../../model/profile';
+import { Profile_Button_Type } from '@/util/buttons';
+import ProfileSettings from '@/components/profile/profile-settings/ProfileSettings.vue';
+import ChangePassword from '@/components/profile/change-password/ChangePassword.vue';
+import { Role } from '@/model/profile';
 
 const activeTab = ref(Profile_Button_Type.BASIC_PROFILE_SETTINGS);
 const profile = reactive({

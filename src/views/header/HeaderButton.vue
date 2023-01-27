@@ -24,7 +24,7 @@ const props = defineProps<{
 </script>
 
 <style scoped>
-@import '../../style.css';
+@import '@/style.css';
 .nav-link {
   text-decoration: none;
   color: black;
